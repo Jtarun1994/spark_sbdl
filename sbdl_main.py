@@ -16,3 +16,5 @@ if __name__ == '__main__':
     logger = Log4j(spark)
 
     logger.info("Finished creating Spark Session")
+
+    logger.info("Test pull request")
