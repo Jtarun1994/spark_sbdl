@@ -4,12 +4,14 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-               sh 'pipenv --python python3 sync'
+               bat 'python -m venv venv'
+               bat 'venv\\Scripts\\pip install --upgrade pip'
+               bat 'venv\\Scripts\\pip install pyspark==4.0.3 pytest chispa faker nutter'
             }
         }
         stage('Test') {
             steps {
-               sh 'pipenv run pytest'
+               bat 'venv\\Scripts\\pytest -v'
             }
         }
         stage('Package') {
